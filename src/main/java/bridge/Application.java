@@ -1,8 +1,14 @@
 package bridge;
 
+import bridge.controller.BridgeController;
+import bridge.domain.MovingStatus;
+
 public class Application {
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        BridgeMaker bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
+        MovingStatus movingStatus = new MovingStatus();
+        BridgeController bridgeController = new BridgeController(new BridgeGame(bridgeMaker, movingStatus));
+        bridgeController.run();
     }
 }
